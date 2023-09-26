@@ -17,7 +17,7 @@ const tripsList = async (req, res) => {
 const tripsFindByCode = async (req, res) => {
     try {
       const trip = await model.find({'code': req.params.tripCode}).exec();
-      if(!trip || trip.length == 0){
+      if(!trip || !trip.length){
         return res.status(404).json({"message": "trip not found"});
       }else{
         return res.status(200).json(trip);
